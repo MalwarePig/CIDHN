@@ -1,0 +1,33 @@
+.wave {
+  /* margin-left: 150px;
+  margin-top: 250px; */
+  position: absolute;
+  width: 1200px;
+  height: 1800px; 
+  border-radius: 50%;
+  opacity: 0.4;
+  bottom: 0;
+  left: 100%;
+  transform: translateX(-50%); 
+}
+
+.wave.-one {
+  animation: rotate 15s infinite linear;
+  opacity: 5%;
+  background: rgb(255, 0, 0);
+}
+
+.wave.-two {
+  animation: rotate 25s infinite linear;
+  opacity: 10%;
+  background: rgb(180, 20, 180);
+}
+
+@keyframes rotate {
+  from {
+    transform: translateX(-80%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
