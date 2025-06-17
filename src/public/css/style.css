@@ -72,7 +72,7 @@ li {
 }
 
 li a {
-  color: black;
+  color: rgb(58, 58, 58);
   text-decoration: none !important;
 }
 
@@ -81,17 +81,17 @@ section {
   /* Sin espacio arriba por defecto */
   text-align: center;
   min-height: 100vh;
-  overflow: hidden; /* Limita el contenido visual al área del section */  
+  overflow: hidden; /* Limita el contenido visual al área del section */
 }
 
 section:not(.Portada) {
-   padding-top: 20%;
+  padding-top: 20%;
   /* Solo los que NO son .inicio */
 }
 
 /* Section Portada */
 
-#Portada { 
+#Portada {
   position: relative;
   scroll-margin-top: 140px;
   min-height: auto;
@@ -132,7 +132,6 @@ section:not(.Portada) {
 }
 
 #Inicio {
-  
 }
 
 #Inicio img {
@@ -210,8 +209,73 @@ section:not(.Portada) {
 
 /* Section Notas */
 #Notas {
-  background-color: rgb(226, 168, 43);
   scroll-margin-top: 150px;
+}
+
+#Notas > h1 {
+  color: #004275;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.notas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notas .nota {
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+
+  position: relative;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  padding-bottom: 100px; /* Espacio para las olas */
+}
+
+.nota .titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #004275;
+  margin-bottom: 10px;
+  background-color: rgb(120, 199, 199);
+}
+
+.nota img {
+  margin-top: 20%;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.nota p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+span {
+  font-weight: bold;
+  color: #004275;
+  font-size: 1.01rem;
+}
+
+.nota .footerNote {
+  text-align: center;
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 /* Section Historia */
