@@ -1,164 +1,202 @@
+:root {
+  --color-dorado: #d5b451; /* Azul oscuro */
+  --color-dark: #000;
+  --color-gray: #67748e;
+  --color-blue: #004275;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* O el alto real de tu header */
 }
 body {
+  min-height: 100vh;
   background: #f4f4fa;
   font-family: "Lora", "Roboto Mono", sans-serif;
 }
 
 header {
-  height: 100px;
+  background-color: #000;
+  height: 80px; /* Prueba fija. Luego puedes volver a usar clamp si quieres */
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(8px); /* desenfoque para efecto glass */
-  transition: height 1s;
-  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.15);
-  padding-bottom: 15px;
 }
 
-header.oculto {
-  width: 100%;
-  height: 50px;
+.logo {
+  margin-left: 25px;
+  margin-right: auto;
 }
 
 #LogoHeader {
-  padding-top: 15px;
-  transition: opacity 0.5s; /* transición suave de opacidad */
-  transition: width 0.8s; /* transición suave de opacidad */
   opacity: 1;
-  width: 100px;
+  width: clamp(50px, 15vw, 75px);
   /*  margin-top: 25px; */
 }
 
-#LogoHeader.oculto {
-  pointer-events: none; /* Opcional: evita que se pueda hacer clic */
-  opacity: 0;
-  width: 0px;
+nav {
+  width: 100%;
+  display: flex;
+  background-color: #000;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.Menu {
+nav ul {
+  width: 100%;
+  display: flex;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+}
+
+nav li {
+  height: 50px;
+}
+
+nav a {
+  height: 100%;
+  padding: 0 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+nav a:hover {
+  background-color: var(--color-dorado);
+  color: black;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+  }
+}
+
+/* sideBar */
+.menu-responsive {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px); /* desenfoque para efecto glass */
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  justify-content: flex-start;
+  align-items: start;
+}
+.menu-responsive li {
   width: 100%;
 }
 
-nav {
-  margin: 10px 0;
+.menu-responsive a {
+  width: 100%;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-}
-
-li {
-  font-family: "Roboto Mono", Poppins, "Courier New", Courier, monospace;
-  font-size: 1rem;
-  font-weight: 500;
-  font-weight: bold;
-}
-
-li a {
-  color: rgb(58, 58, 58);
-  text-decoration: none !important;
 }
 
 section {
-  padding-top: 0;
   /* Sin espacio arriba por defecto */
   text-align: center;
-  min-height: 100vh;
-  overflow: hidden; /* Limita el contenido visual al área del section */
-}
-
-section:not(.Portada) {
-  padding-top: 20%;
-  /* Solo los que NO son .inicio */
+  min-height: 85vh;
+  scroll-margin-top: -10px !important; /* igual que la altura total del header */
 }
 
 /* Section Portada */
-
-#Portada {
+#portada {
+  overflow: hidden;
+  /* background-color: #004275c4; */
   position: relative;
-  scroll-margin-top: 140px;
   min-height: auto;
   height: 725px; /* <-- Aquí cambias la altura */
+  overflow: hidden;
 }
 
 .Titulo {
-  color: #004275;
+  color: var(--color-dorado);
   margin-top: 60%;
   font-size: 2.5rem;
 }
 
-#Portada img {
-  width: 200px;
-  border-radius: 70px;
+.logoOficial {
+  display: none;
 }
-
+.presentacion {
+  display: none;
+}
 #portada1 {
+  width: 200px;
+  border-radius: 24px;
   position: absolute;
   top: 0;
   left: 0;
-  mask-image: linear-gradient(black 80%, transparent);
+  mask-image: linear-gradient(black 90%, transparent);
 }
 
 #portada2 {
+  width: 200px;
+  border-radius: 24px;
   position: absolute;
   bottom: 5%;
   right: 0;
-  mask-image: linear-gradient(rgb(255, 255, 255) 90%, transparent);
-}
-/* Section Inicio */
-#Portada,
-#Inicio,
-#Sedes,
-#Notas,
-#Historia {
-  scroll-margin-top: 115px; /* igual que la altura total del header */
+  mask-image: linear-gradient(black 90%, transparent);
 }
 
-#Inicio {
+/* Section Notas */
+#notas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#Inicio img {
-  width: 200px;
+#SeparadorVertical {
+  width: 100%;
+  height: 70px; /* o cualquier altura fija o relativa */
+  display: block; /* para eliminar espacio blanco debajo */
 }
 
-#Inicio > p {
-  padding: 30px;
-  text-align: justify;
-  font-size: 1rem;
-  letter-spacing: 0.01em;
-  color: #22223b;
-  line-height: 1.5;
-  text-rendering: optimizeLegibility;
-}
-#Inicio > p span {
+#notas > h1 {
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--color-dark);
+  font-size: 2rem;
+  margin: 10px 0;
   font-weight: bold;
-  color: #004275;
-  font-size: 1.01rem;
 }
 
 .galeria {
-  /* background-color: rgb(208, 226, 43); */
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding: 24px;
-  width: 300px;
+  width: 80%; /* Ocupa todo el ancho disponible */
+  max-width: 1000px; /* Limita el ancho máximo */
   height: 360px;
   scroll-snap-type: x mandatory;
   scroll-padding: 24px;
@@ -167,20 +205,26 @@ section:not(.Portada) {
   margin: 1rem auto;
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   scrollbar-width: none;
 }
 
 .galeria .item {
-  flex: 0 0 100%;
+  min-width: 280px; /* Ancho mínimo para móviles */
+  max-width: 320px; /* Ancho máximo para desktop */
+  width: 90%; /* O usa 100% si prefieres */
+  flex: 0 0 auto;
   padding: 0px;
   border-radius: 8px;
   scroll-snap-align: start;
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
-.item p {
+
+.item h1 {
+  font-size: 1.5rem;
+  color: var(--color-blue);
   margin: 10px 0;
   padding: 5px 10px;
+  text-align: center;
 }
 
 .item img {
@@ -189,6 +233,31 @@ section:not(.Portada) {
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.item p {
+  margin: 10px 0;
+  padding: 5px 10px;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  color: var(--color-gray);
+  font-size: 0.9rem;
+  padding: 0 20px;
+}
+
+.mensaje h3 {
+  margin: 10px 0;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.05rem;
+  color: var(--color-blue);
+}
+.mensaje > p {
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  color: var(--color-gray);
+  font-size: 0.9rem;
+  padding: 0 20px;
 }
 
 #card1 {
@@ -201,53 +270,65 @@ section:not(.Portada) {
   background-color: rgba(202, 37, 207, 0.121);
 }
 
-/* Section Sedes */
-#Sedes {
-  background-color: rgb(43, 226, 150);
-  scroll-margin-top: 150px;
-}
+/* Eventos */
 
-/* Section Notas */
-#Notas {
-  scroll-margin-top: 150px;
-}
-
-#Notas > h1 {
-  color: #004275;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.notas {
+#eventos {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+#eventos h1 {
+  margin-top: 90%;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--color-dark);
+  font-size: 2rem;
+  margin: 20px 0;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.notas {
+  width: 85%;
+  height: 550px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 20px 0;
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .notas .nota {
-  width: 300px;
-  height: 300px;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  padding: 10px 20px;
-
-  position: relative;
-  overflow: hidden;
-  background-color: #f9f9f9;
+  width: 80%;
+  max-width: 400px;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-  padding-bottom: 100px; /* Espacio para las olas */
+  padding: 20px;
+  background-color: #f9f9f9;
+  position: relative;
 }
 
 .nota .titulo {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 1.2rem;
   font-weight: bold;
-  color: #004275;
-  margin-bottom: 10px;
-  background-color: rgb(120, 199, 199);
+  color: var(--color-blue);
+}
+
+.contenido-nota {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .nota img {
@@ -260,14 +341,15 @@ section:not(.Portada) {
 }
 
 .nota p {
-  font-size: 1.1rem;
-  color: #333;
-  line-height: 1.5;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  color: var(--color-gray);
+  font-size: 0.9rem;
+  padding: 0 20px;
 }
 
 span {
   font-weight: bold;
-  color: #004275;
+  color: var(--color-blue);
   font-size: 1.01rem;
 }
 
@@ -275,11 +357,323 @@ span {
   text-align: center;
   margin-top: auto;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-gray);
 }
 
+/* Section Sedes */
+#contacto {
+  min-height: auto;
+}
+
+.container {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: auto;
+}
+
+.item:nth-child(1),
+.item:nth-child(3) {
+  flex: 1;
+}
+
+#contacto h1 {
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--color-dark);
+  font-size: 2rem;
+  margin: 20px 0;
+  font-weight: bold;
+}
+.datos {
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.item:nth-child(1) .datos img {
+  margin-top: 20px;
+  height: 300px;
+}
+
+.item:nth-child(1) .datos h3 {
+  margin: 30px 0;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.05rem;
+  color: var(--color-blue);
+}
+
+.item:nth-child(1) .datos h4 {
+  margin-top: 40px;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.05rem;
+  color: var(--color-dorado);
+  text-align: start;
+  padding: 0 20px;
+}
+.direccion {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 20px;
+}
+
+.item:nth-child(1) .direccion i {
+  margin-right: 10px;
+}
+
+.item:nth-child(1) .direccion p {
+  text-align: start;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.item:nth-child(2) {
+  flex: 2;
+}
+
+/* mapa */
+#mapa path {
+  margin-top: 20px;
+  fill: var(--color-gray);
+  stroke: #004275;
+  stroke-width: 2px;
+}
+
+#mapa path:hover {
+  fill: #fafafa;
+}
+
+#mapa #MXNLE {
+  fill: var(--color-dorado);
+}
+
+/* Formulario */
+.item:nth-child(3) h3 {
+  padding-top: 30px;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.05rem;
+  color: var(--color-blue);
+}
+.item:nth-child(3) i {
+  margin: 0 10px;
+  font-size: 1.2rem;
+}
+
+.form-contacto {
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  text-align: start;
+  padding: 0 20px;
+}
+
+.item:nth-child(3) .form-contacto label {
+  margin-top: 15px;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.01rem;
+  color: var(--color-blue);
+}
+
+.item:nth-child(3) input {
+  height: 40px;
+  font-size: 1.2rem;
+  border-radius: 14px;
+  padding: 0 5px;
+  color: var(--color-gray);
+}
+
+textarea {
+  resize: none;
+  font-size: 1.2rem;
+  border-radius: 14px;
+  padding: 5px 5px;
+  color: var(--color-gray);
+}
+
+form button {
+  width: 50%;
+  height: 40px;
+  display: block;
+  margin: 10px auto;
+  border: none;
+  border-radius: 14px;
+  background-color: var(--color-blue);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  color: white;
+  transition: transform 0.3s ease; /* animación suave */
+}
+
+form button:hover {
+  background-color: var(--color-dorado);
+  color: var(--color-dark);
+  transform: scale(1.1); /* agranda 10% */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.separador {
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  line-height: 0.1em;
+  margin: 10px 0;
+}
+
+.separador span {
+  padding: 0 10px;
+  color: #888;
+}
+
+#Ws {
+  fill: #25d366;
+}
+
+#Ws svg {
+  margin: 10px 0;
+  width: 40px;
+  transition: transform 0.3s ease;
+}
+
+#Ws svg:hover {
+  transform: scale(1.2);
+}
 /* Section Historia */
-#Historia {
-  background-color: rgb(226, 43, 119);
-  scroll-margin-top: 150px;
+footer {
+  margin-top: 60px;
+  height: 150px;
+  background-color: var(--color-gray);
+  /*   background-color: var(--color-dorado);
+  mask-image: linear-gradient(to top, black 70%, transparent); */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer h4 {
+  margin-top: 30px;
+  color: white;
+  font-family: Poppins-Bold, "Lora", "Roboto Mono", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+}
+
+footer .redes {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+footer .redes i {
+  color: white;
+  padding: 5px;
+  transition: tranform 0.2s ease;
+}
+
+footer .redes i:hover {
+  transform: scale(1.2);
+}
+
+/* Botton up */
+.up {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+.up i{
+  color: #d5b451;
+  font-size: 2rem;
+}
+
+.oculto{
+  opacity: 0;
+}
+
+#svgAnimacion {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  /* Logo 1: aparece→desaparece */
+  #portada1 {
+    border-radius: 50%;
+    display: block;
+    margin-left: 20px;
+    width: 200px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    animation: fade 20s ease-in-out infinite;
+  }
+
+  #portada2 {
+    border-radius: 50%;
+    display: block;
+    margin-left: 20px;
+    width: 200px;
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    animation: fade 20s ease-in-out infinite;
+  }
+
+  /* Logo 2: idéntico, pero empieza a la mitad del ciclo */
+  #logoOficial1 {
+    display: block;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+    top: 20px;
+    left: 20px;
+    /* Delay de la mitad de la duración (5s/2 = 2.5s) */
+    animation: fade 20s ease-in-out infinite;
+    animation-delay: 10s;
+  }
+  #logoOficial2 {
+    display: block;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 20px;
+    right: 10px;
+    /* Delay de la mitad de la duración (5s/2 = 2.5s) */
+    animation: fade 20s ease-in-out infinite;
+    animation-delay: 10s;
+  }
+
+  /* Keyframes comunes */
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }

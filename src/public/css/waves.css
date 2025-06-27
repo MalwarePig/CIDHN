@@ -1,6 +1,4 @@
 .wave {
-  /* margin-left: 150px;
-  margin-top: 250px; */
   position: absolute;
   width: 1200px;
   height: 1800px; 
@@ -8,24 +6,26 @@
   opacity: 0.4;
   bottom: 0;
   left: 100%;
-  transform: translateX(-50%); 
+  /* fija el translateX aquí */
+  transform: translateX(-50%);
 }
 
 .wave.-one {
-  animation: rotate 15s infinite linear;
-  opacity: 5%;
   background: rgb(255, 0, 0);
+  opacity: 0.05;
+  animation: spin 15s infinite linear;
 }
 
 .wave.-two {
-  animation: rotate 25s infinite linear;
-  opacity: 10%;
   background: rgb(180, 20, 180);
+  opacity: 0.1;
+  animation: spin 25s infinite linear;
 }
 
-@keyframes rotate {
+@keyframes spin {
   from {
-    transform: translateX(-80%) rotate(0deg);
+    /* sólo rota */
+    transform: translateX(-50%) rotate(0deg);
   }
   to {
     transform: translateX(-50%) rotate(360deg);
